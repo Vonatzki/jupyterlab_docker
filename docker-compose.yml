@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  jupyterlab:
+    image: vonatzki/datascience-notebook:latest
+    build: ./
+    container_name: jupyterlab
+    user: root
+    environment:
+      GRANT_SUDO: "yes"
+      JUPYTER_ENABLE_LAB: "yes"
+    volumes:
+      - ~/Documents/jupyterlab-files:/home/jovyan/work
+    ports:
+      - "8890:8888"
+      - "8050:8050"
+    networks:
+      - jupyterlab_docker
+    restart: "always"
+  # splash:
+  #   image: scrapinghub/splash:latest
+  #   container_name: splash
+  #   ports:
+  #     - "8050:8050"
+networks:
+  jupyterlab_docker:
+    external: true
