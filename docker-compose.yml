@@ -10,9 +10,11 @@ services:
       JUPYTER_ENABLE_LAB: "yes"
     volumes:
       - ~/Documents/jupyterlab-files:/home/jovyan/work
+      - /media/vonatzki/datasets:/home/jovyan/datasets
     ports:
       - "8890:8888"
       - "8050:8050"
+      - "4040:4040"
     networks:
       - jupyterlab_docker
     restart: "always"

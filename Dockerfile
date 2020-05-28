@@ -6,13 +6,17 @@ ENV JUPYTER_ENABLE_LAB yes
 # Install VIM
 USER root
 RUN apt update \
-    && apt install -yqq vim
+    && apt install -yqq vim \
+    && apt install -yqq openjdk-8-jre-headless
 
 # Switch back to jovyan user
 USER jovyan
 
 # Install Jupyterlab Plugins
 RUN jupyter labextension install @jupyterlab/toc
+
+# Install pyspark
+RUN pip install pyspark
 
 # Install plotly and integrate with Jupyterlab
 RUN pip install plotly dash \
@@ -26,4 +30,3 @@ RUN pip install plotly dash \
 && jupyter labextension install plotlywidget@4.6.0 --no-build \
 # Build extensions (must be done to activate extensions since --no-build is used above)
 && jupyter lab build
-
