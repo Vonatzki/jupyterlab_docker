@@ -23,7 +23,7 @@ RUN pip install plotly dash \
 # Avoid "JavaScript heap out of memory" errors during extension installation
 && export NODE_OPTIONS=--max-old-space-size=4096 \
 # Jupyter widgets extension
-&& jupyter labextension install @jupyter-widgets/jupyterlab-manager@1.1 --no-build \
+&& jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build \
 # jupyterlab renderer support
 && jupyter labextension install jupyterlab-plotly@4.6.0 --no-build \
 # FigureWidget support
